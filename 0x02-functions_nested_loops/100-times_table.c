@@ -1,47 +1,46 @@
 #include "main.h"
-
-void printTimesTable(int n) 
+/**
+ * print_times_table - prints the n times table, starting with 0
+ * @n: number of the times table
+ */
+void print_times_table(int n)
 {
-if (n < 0)
-{
-printf("Invalid input. Please provide a non-negative integer.\n");
-return;
+	int i, j, k;
+
+	if (n >= 0 && n <= 15)
+	{
+		for (i = 0; i <= n; i++)
+		{
+			for (j = 0; j <= n; j++)
+			{
+				k = j * i;
+				if (j == 0)
+				{
+					_putchar(k + '0');
+				} else if (k < 10 && j != 0)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(k + '0');
+				} else if (k >= 10 && k < 100)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar((k / 10) + '0');
+					_putchar((k % 10) + '0');
+				} else if (k >= 100)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar((k / 100) + '0');
+					_putchar(((k / 10) % 10) + '0');
+					_putchar((k % 10) + '0');
+				}
+			}
+			_putchar('\n');
+		}
+	}
 }
-for (int i = 0; i <= 10; i++) {
-int product = n * i;
-char buffer[20]; // Buffer to hold the converted integer to string
-int j = 0;
-
-// Convert the product to a string
-if (product == 0) 
-{
-buffer[j++] = '0';
-} 
-else {
-while (product > 0) {
-buffer[j++] = (product % 10) + '0';
-product /= 10;
-}
-}
-
-// Print the product
-for (int k = j - 1; k >= 0; k--) {
-putchar(buffer[k]);
-}
-putchar(' ');
-}
-
-putchar('\n');
-}
-
-int main() {
-int n;
-
-printf("Enter a non-negative integer: ");
-scanf("%d", &n);
-
-printTimesTable(n);
-
-return 0;
-}
-
