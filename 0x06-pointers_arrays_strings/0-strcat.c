@@ -14,10 +14,10 @@ count++;
 }
 while (count2 >= 0)
 {
-*(dest + count) = *(src + count2);							
+*(dest + count) = *(src + count2);					
 if (*(src + count2) == '\0')
 break;
-count++;										
+count++;								
 count2++;
 }
 return (dest);
